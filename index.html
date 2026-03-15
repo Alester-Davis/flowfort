@@ -1077,6 +1077,103 @@
       opacity: 0.2;
     }
 
+    /* ─── Contact Section ────────────────────────────────────── */
+    .contact-section {
+      padding: 6rem 2rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .contact-info h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .contact-info p {
+      color: var(--subtext);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--subtext);
+      font-size: 0.95rem;
+    }
+    .contact-detail i,
+    .contact-detail svg {
+      width: 18px;
+      height: 18px;
+      color: var(--primary-hl);
+      flex-shrink: 0;
+    }
+    .contact-form-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(32px);
+      border: 1px solid var(--stroke);
+      border-radius: 24px;
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-form-card::before {
+      content: '';
+      position: absolute;
+      top: -40%; right: -20%;
+      width: 400px; height: 400px;
+      background: var(--primary);
+      border-radius: 50%;
+      filter: blur(160px);
+      opacity: 0.06;
+      pointer-events: none;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; position: relative; z-index: 1; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--subtext);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--stroke);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--primary-hl);
+      box-shadow: 0 0 0 3px rgba(77,161,138,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-group select option { background: var(--bg); color: var(--text); }
+    .contact-submit {
+      align-self: flex-start;
+      margin-top: 0.5rem;
+    }
+
     /* ─── Footer ──────────────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--stroke);
@@ -1126,6 +1223,7 @@
       #cta { padding: 6rem 2rem 8rem; }
       .cta-card { padding: 4rem 3rem; }
       footer { padding: 2rem; }
+      .contact-grid { grid-template-columns: 1fr; }
       .hw-threat, .hw-risk { display: none; }
       .hw-patch { top: auto; bottom: 12%; left: 50%; transform: translateX(-50%); }
     }
@@ -1143,6 +1241,9 @@
       .cta-card { padding: 2.5rem 1.5rem; border-radius: 20px; }
       .cta-actions { flex-direction: column; width: 100%; }
       .cta-actions .btn { width: 100%; justify-content: center; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-section { padding: 4rem 1.25rem; }
+      .contact-submit { width: 100%; }
       footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem 1.25rem; }
       .hw-patch { display: none; }
     }
@@ -1187,6 +1288,7 @@
       <li><a href="#problem">The Problem</a></li>
       <li><a href="#features">Platform</a></li>
       <li><a href="#compliance">Compliance</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta">
       <a href="#" class="btn btn-ghost">Sign In</a>
@@ -1513,6 +1615,71 @@
     </div>
   </div>
 
+  <!-- ─── Contact Us ────────────────────────────────────────────── -->
+  <div id="contact" class="contact-section reveal">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Get in Touch</h2>
+        <p>Ready to secure your OT environment? Reach out to our team and we'll help you get started with FlowFort.</p>
+        <div class="contact-detail">
+          <i data-lucide="mail"></i>
+          <span>contact@secureplex.com</span>
+        </div>
+        <div class="contact-detail">
+          <i data-lucide="phone"></i>
+          <span>+1 (800) 555-0199</span>
+        </div>
+        <div class="contact-detail">
+          <i data-lucide="map-pin"></i>
+          <span>Austin, TX — United States</span>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <form class="contact-form" onsubmit="event.preventDefault();">
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="John" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Doe" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Work Email</label>
+            <input type="email" placeholder="john@company.com" required>
+          </div>
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" placeholder="Your organization">
+          </div>
+          <div class="form-group">
+            <label>Interest</label>
+            <select>
+              <option value="">Select a topic...</option>
+              <option>OT Patch Management</option>
+              <option>Risk & Compliance</option>
+              <option>Product Demo</option>
+              <option>Partnership</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your OT security needs..."></textarea>
+          </div>
+          <a href="#" class="btn btn-primary btn-large contact-submit" onclick="event.preventDefault();">
+            <i data-lucide="send"></i>
+            Send Message
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="glow-line"></div>
+
   <!-- ─── Footer ────────────────────────────────────────────────── -->
   <footer>
     <div class="footer-logo">
@@ -1724,8 +1891,9 @@
       heroSection.style.pointerEvents = p >= 1 ? 'none' : 'auto';
     }
 
-    // ── RAF tick: reads real scrollY, drives hero ───────────────────
-    let lastScrollY = -1;
+    // ── RAF tick: lerp-smoothed scroll drives hero ──────────────────
+    let smoothP = 0;
+    const LERP_SPEED = 0.12; // lower = smoother, higher = more responsive
     function tick() {
       requestAnimationFrame(tick);
       const sy = window.scrollY;
@@ -1736,13 +1904,20 @@
       navEl.classList.toggle('page-active', pastHero);
 
       if (!framesReady) return;
-      if (sy === lastScrollY) return;
-      lastScrollY = sy;
 
-      // Progress through the spacer
+      // Target progress from real scroll
       const spacerH = heroSpacer.offsetHeight;
-      const p = Math.min(1, Math.max(0, sy / (spacerH - window.innerHeight)));
-      updateHero(p);
+      const targetP = Math.min(1, Math.max(0, sy / (spacerH - window.innerHeight)));
+
+      // Lerp toward target for buttery smooth motion
+      const diff = targetP - smoothP;
+      if (Math.abs(diff) < 0.0005) {
+        smoothP = targetP;
+      } else {
+        smoothP += diff * LERP_SPEED;
+      }
+
+      updateHero(smoothP);
     }
     tick();
 
